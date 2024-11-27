@@ -2,7 +2,7 @@ import React from 'react';
 
 const PackingList = ({
   items,
-  onTogglePacked,
+  onUpdateItem,
   onDeleteItem,
 }) => (
   <div className="list">
@@ -15,7 +15,7 @@ const PackingList = ({
           <input
             type="checkbox"
             checked={item.packed}
-            onChange={() => onTogglePacked(item.id)}
+            onChange={(e) => onUpdateItem(item.id, e.target.checked)}
           />
           {item.quantity} x {item.description}
           <button type="button" onClick={() => onDeleteItem(item.id)}>

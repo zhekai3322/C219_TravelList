@@ -130,3 +130,25 @@ input[type="checkbox"] {
   font-weight: 700;
   padding: 3.2rem 0;
 }
+
+.sort-and-clear button {
+  background-color: #24e7c7;
+  color: #eb660d;
+  font-family: inherit;
+  border: none;
+  border-radius: 10rem;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 0.4rem;
+}
+
+.sort-and-clear button:hover {
+  background-color: #f7f7f7;
+}
+
+.sort-and-clear button:active {
+  transform: scale(0.9);
+}
