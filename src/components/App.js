@@ -1117,8 +1117,121 @@
 
 // export default App;
 
-// Activity 9d
+// // Activity 9d
+// import React, { useState } from 'react';
+
+// function App() {
+//   const [items, setItems] = useState([]);
+//   const [description, setDescription] = useState('');
+//   const [quantity, setQuantity] = useState(1);
+
+//   const handleAddItem = (e) => {
+//     e.preventDefault();
+//     if (description) {
+//       const newItem = {
+//         id: Date.now(),
+//         description,
+//         quantity,
+//         packed: false,
+//       };
+//       setItems((prevItems) => [...prevItems, newItem]);
+//       setDescription('');
+//       setQuantity(1);
+//     }
+//   };
+
+//   const handleTogglePacked = (id) => {
+//     setItems((prevItems) =>
+//       prevItems.map((item) =>
+//         item.id === id ? { ...item, packed: !item.packed } : item
+//       )
+//     );
+//   };
+
+//   const handleDeleteItem = (id) => {
+//     setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+//   };
+
+//   return (
+//     <div className="app">
+//       <h1>My Travel List</h1>
+//       <Form
+//         description={description}
+//         setDescription={setDescription}
+//         quantity={quantity}
+//         setQuantity={setQuantity}
+//         handleAddItem={handleAddItem}
+//       />
+//       <PackingList
+//         items={items}
+//         onTogglePacked={handleTogglePacked}
+//         onDeleteItem={handleDeleteItem}
+//       />
+//     </div>
+//   );
+// }
+
+// const Form = ({
+//   description,
+//   setDescription,
+//   quantity,
+//   setQuantity,
+//   handleAddItem,
+// }) => (
+//   <form className="add-form" onSubmit={handleAddItem}>
+//     <h3>What do you need to pack?</h3>
+//     <select
+//       value={quantity}
+//       onChange={(e) => setQuantity(Number(e.target.value))}
+//     >
+//       <option value={1}>1</option>
+//       <option value={2}>2</option>
+//       <option value={3}>3</option>
+//     </select>
+//     <input
+//       type="text"
+//       value={description}
+//       onChange={(e) => setDescription(e.target.value)}
+//       placeholder="Item..."
+//     />
+//     <button type="submit">Add</button>
+//   </form>
+// );
+
+// const PackingList = ({
+//   items,
+//   onTogglePacked,
+//   onDeleteItem,
+// }) => (
+//   <div className="list">
+//     <ul>
+//       {items.map((item) => (
+//         <li
+//           key={item.id}
+//           style={{ textDecoration: item.packed ? 'line-through' : 'none' }}
+//         >
+//           <input
+//             type="checkbox"
+//             checked={item.packed}
+//             onChange={() => onTogglePacked(item.id)}
+//           />
+//           {item.quantity} x {item.description}
+//           <button type="button" onClick={() => onDeleteItem(item.id)}>
+//             Delete
+//           </button>
+//         </li>
+//       ))}
+//     </ul>
+//   </div>
+// );
+
+// export default App;
+
+// L07 Exs
 import React, { useState } from 'react';
+import Form from './Form.js';
+import PackingList from './PackingList.js';
+import Stats from './Stats.js';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -1167,62 +1280,9 @@ function App() {
         onTogglePacked={handleTogglePacked}
         onDeleteItem={handleDeleteItem}
       />
+      <Stats items={items} />
     </div>
   );
 }
-
-const Form = ({
-  description,
-  setDescription,
-  quantity,
-  setQuantity,
-  handleAddItem,
-}) => (
-  <form className="add-form" onSubmit={handleAddItem}>
-    <h3>What do you need to pack?</h3>
-    <select
-      value={quantity}
-      onChange={(e) => setQuantity(Number(e.target.value))}
-    >
-      <option value={1}>1</option>
-      <option value={2}>2</option>
-      <option value={3}>3</option>
-    </select>
-    <input
-      type="text"
-      value={description}
-      onChange={(e) => setDescription(e.target.value)}
-      placeholder="Item..."
-    />
-    <button type="submit">Add</button>
-  </form>
-);
-
-const PackingList = ({
-  items,
-  onTogglePacked,
-  onDeleteItem,
-}) => (
-  <div className="list">
-    <ul>
-      {items.map((item) => (
-        <li
-          key={item.id}
-          style={{ textDecoration: item.packed ? 'line-through' : 'none' }}
-        >
-          <input
-            type="checkbox"
-            checked={item.packed}
-            onChange={() => onTogglePacked(item.id)}
-          />
-          {item.quantity} x {item.description}
-          <button type="button" onClick={() => onDeleteItem(item.id)}>
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
 
 export default App;
